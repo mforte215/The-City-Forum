@@ -1,0 +1,10 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+{% block content%}
+<div class="main-content">
+    <h1>{{thread.title}}</h1>
+    <div class="thread-body">
+    <p>{{thread.body}}</p>
+    </div>
+</div>
+{% endblock %}

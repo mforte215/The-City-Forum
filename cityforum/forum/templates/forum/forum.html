@@ -1,0 +1,16 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+{% block content%}
+<div class="main-content">
+    <div class="latest-threads">
+        <h2>Latest {{forum.title}} Threads</h2>
+        {% if threads %}
+        {% for thread in threads %}
+        <div class="thread-teaser">
+        <a href="{% url 'thread' thread.forum thread.slug %}">{{thread.title}}</a>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

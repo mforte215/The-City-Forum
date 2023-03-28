@@ -1,0 +1,17 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>The City Forum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'forum/css/style.css' %}">
+</head>
+
+<body>
+    <div class="page-content">
+    {% include "forum/sidebar.html" %}
+    {% block content%}{% endblock %}
+
+    </div>
+</body>
+</html>

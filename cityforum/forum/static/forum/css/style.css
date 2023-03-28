@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* %%%%%%%%%%%%%% */
+/* NAVIGATION BAR */
+/* %%%%%%%%%%%%%% */
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+  width: 100%;
+  -webkit-box-shadow: 1px 5px 15px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 5px 15px -2px rgba(0, 0, 0, 0.5);
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: larger;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.footer {
+  height: 3em;
+  background-color: rgb(0, 76, 84);
+  text-align: center;
+  color: white;
+  position: relative;
+  bottom: 0;
+}
+
+.footer p {
+  padding-top: 1em;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  overflow-x: hidden;
+  color: gray;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+}
+
+.sidebar-text-holder {
+  margin-left: 25px;
+}
+
+.logo {
+  background-color: black;
+  color: white;
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: x-large;
+}
+
+.link-area a {
+  text-decoration: none;
+  color: gray;
+  font-size: x-large;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.link-area a:hover {
+  color: white;
+  background-color: gray;
+}
+
+.link-area {
+  margin-top: 20px;
+}
+
+.main-content {
+  margin-left: 250px;
+  text-align: center;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  margin-top: 100px;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.card {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.card-image {
+  height: 250px;
+  width: 250px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+}
+
+.latest-threads {
+  text-align: left;
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.thread-teaser {
+  border-bottom: 3px solid black;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.thread-teaser a {
+  text-decoration: none;
+  color: black;
+  border-bottom: none;
+  font-size: x-large;
+}
+
+.thread-body {
+  width: 80%;
+  margin: auto;
+}

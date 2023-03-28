@@ -1,0 +1,27 @@
+{% load static %}
+<div class="sidebar" id="mySidebar">
+  <div class="sidebar-text-holder">
+    <a href="/">
+    <div class="logo">
+    THE CITY FORUM
+    </div>
+  </a>
+  <div class="link-container">
+    <div class="link-area">
+      <a href="/">Login</a>
+    </div>
+    <div class="link-area">
+      <a href="{% url 'forum' 'Development' %}">Development</a>
+    </div>
+    <div class="link-area">
+      <a href="{% url 'forum' 'Politics' %}">Politics</a>
+    </div>
+    <div class="link-area">
+      <a href="{% url 'forum' 'Sports' %}">Sports</a>
+      </div>
+    <div class="link-area">
+      <a href="{% url 'forum' 'Other' %}">Other</a>
+    </div>
+  </div>
+  </div>
+  </div>

@@ -1,0 +1,34 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+{% block content%}
+<div class="main-content">
+    <div class="card-wrapper">
+        <div class="card">
+            <img class="card-image" src={% static "forum/images/sunrise_philly.jpg" alt="card image" %} />
+            <p>Example Title For Example Card</p>
+        </div>
+        <div class="card">
+            <img class="card-image" src={% static "forum/images/sunrise_philly.jpg" alt="card image" %} />
+            <p>Example Title For Example Card</p>
+        </div>
+        <div class="card">
+            <img class="card-image" src={% static "forum/images/sunrise_philly.jpg" alt="card image" %} />
+            <p>Example Title For Example Card</p>
+        </div>
+        <div class="card">
+            <img class="card-image" src={% static "forum/images/sunrise_philly.jpg" alt="card image" %} />
+            <p>Example Title For Example Card</p>
+        </div>
+    </div>
+    <div class="latest-threads">
+        <h2>Latest Threads</h2>
+        {% if latest_threads %}
+        {% for thread in latest_threads %}
+        <div class="thread-teaser">
+        <a href="{% url 'thread' thread.forum thread.slug %}">{{thread.title}} | {{thread.forum}}</a>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
