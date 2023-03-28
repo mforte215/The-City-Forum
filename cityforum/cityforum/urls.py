@@ -7,4 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('forum/<str:title>', views.forumView, name='forum'),
     path('forum/<str:title>/<slug:slug>', views.threadView, name='thread'),
+    path('login/', views.loginView, name='login'),
+    path('logout/', views.logoutView, name='logout'),
 ]

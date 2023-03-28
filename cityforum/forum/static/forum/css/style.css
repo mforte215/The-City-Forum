@@ -141,3 +141,37 @@ body {
   width: 80%;
   margin: auto;
 }
+
+/* LOGIN */
+.login-container {
+  margin-top: 10%;
+  width: 40%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.form-control {
+  padding: 10px;
+}
+
+.form-control input {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+}
+
+.form-control label {
+  margin-right: 3px;
+}
+
+.login-btn {
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+}
