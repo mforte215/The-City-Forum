@@ -1,0 +1,24 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-content">
+<div class="login-container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-control"> 
+        <label>Username</label>
+        <input name="user" type="text" />
+        </div>
+        <div class="form-control">
+        <label>Password</label>
+        <input name="word1" type="password" />
+        </div>
+        <div class="form-control">
+            <label>Confirm Password</label>
+            <input name="word2" type="password" />
+            </div>
+        <input class="login-btn" type="submit" value="Sign Up" />
+    </form>
+</div>
+</div>
+{% endblock %}

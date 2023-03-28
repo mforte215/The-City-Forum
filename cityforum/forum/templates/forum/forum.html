@@ -3,6 +3,11 @@
 {% block content%}
 <div class="main-content">
     <div class="latest-threads">
+        {% if user.is_authenticated %}
+        <div class="add-thread-box">
+            <button class="add-thread-btn">Add Thread</button>
+        </div>
+        {% endif %}
         <h2>Latest {{forum.title}} Threads</h2>
         {% if threads %}
         {% for thread in threads %}

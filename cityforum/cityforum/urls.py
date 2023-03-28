@@ -9,4 +9,5 @@ urlpatterns = [
     path('forum/<str:title>/<slug:slug>', views.threadView, name='thread'),
     path('login/', views.loginView, name='login'),
     path('logout/', views.logoutView, name='logout'),
+    path('sign-up/', views.signupView, name='sign-up'),
 ]

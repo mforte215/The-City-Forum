@@ -142,27 +142,45 @@ body {
   margin: auto;
 }
 
+.add-thread-box {
+  display: block;
+  overflow: auto;
+  width: 80%;
+}
+
+.add-thread-btn {
+  float: right;
+  background-color: black;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+}
+
 /* LOGIN */
 .login-container {
   margin-top: 10%;
-  width: 40%;
+  width: 30%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
   padding: 30px;
   border-radius: 10px;
+  overflow: auto;
 }
 
 .form-control {
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .form-control input {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  float: right;
 }
 
 .form-control label {
   margin-right: 3px;
+  float: left;
 }
 
 .login-btn {
@@ -174,4 +192,6 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  float: right;
 }
