@@ -75,3 +75,23 @@ def signupView(request):
                 else:
                     return render(request, 'registration/sign-up.html')
                 
+def AddThreadView(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            forums = Forum.objects.all()
+            return render(request, 'forum/add-thread.html', {'forums': forums})
+        else:
+            return render(request, 'registration/login.html')
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            thread_forum = request.POST['thread-forum']
+            title = request.POST['title']
+            body = request.POST['body']
+            '''Needs to be forum instance so need to get forum object'''
+            forum = Forum.objects.get(id=thread_forum)
+            new_thread = Thread(forum=forum, title=title, body=body)
+            new_thread.save()
+            threads = Thread.objects.filter(forum__id=thread_forum)
+            return render(request, 'forum/forum.html', {'threads': threads, 'forum': forum })
+        else:
+            return render(request, 'registration/login.html')    

@@ -137,11 +137,6 @@ body {
   font-size: x-large;
 }
 
-.thread-body {
-  width: 80%;
-  margin: auto;
-}
-
 .add-thread-box {
   display: block;
   overflow: auto;
@@ -194,4 +189,43 @@ body {
   border-radius: 8px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
   float: right;
+}
+
+/* ADD THREAD PAGE */
+
+.add-thread-container {
+  margin-top: 10%;
+  width: 80%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 30px;
+  border-radius: 10px;
+  overflow: auto;
+  text-align: left;
+}
+
+.thread-body {
+  width: 80%;
+  height: fit-content;
+  max-width: 80%;
+  min-width: 80%;
+}
+
+.thread-title {
+  width: 80%;
+  max-width: 80%;
+  min-width: 80%;
+}
+
+.submit-thread-btn {
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }

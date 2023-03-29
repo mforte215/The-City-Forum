@@ -1,0 +1,28 @@
+{% extends 'forum/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-content">
+<div class="add-thread-container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="thread-form-control"> 
+            <p>Thread Forum</p>
+            <select name="thread-forum">
+            {% for forum in forums %}
+            <option value={{forum.id}}>{{forum.title}}</option>
+            {% endfor %}
+            </select>
+            </div>
+        <div class="thread-form-control"> 
+        <p>Thread Title</p>
+        <input class="thread-title" name="title" type="text" />
+        </div>
+        <div class="thread-form-control">
+        <p>Thread Text</p>
+        <textarea class="thread-body" rows="10" name="body" /> </textarea>
+        </div>
+        <input class="submit-thread-btn" type="submit" value="Add Thread">
+    </form>
+</div>
+</div>
+{% endblock %}

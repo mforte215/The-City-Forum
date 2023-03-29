@@ -2,7 +2,7 @@
 {% load static %}
 {% block content%}
 <div class="main-content">
-    <div class="card-wrapper">
+{% comment %}  <div class="card-wrapper">
         <div class="card">
             <img class="card-image" src={% static "forum/images/sunrise_philly.jpg" alt="card image" %} />
             <p>Example Title For Example Card</p>
@@ -19,8 +19,13 @@
             <img class="card-image" src={% static "forum/images/sunrise_philly.jpg" alt="card image" %} />
             <p>Example Title For Example Card</p>
         </div>
-    </div>
+    </div> {% endcomment %}
     <div class="latest-threads">
+        {% if user.is_authenticated %}
+        <div class="add-thread-box">
+            <a class="add-thread-btn" href={% url 'add-thread' %}>Add Thread</a>
+        </div>
+        {% endif %}
         <h2>Latest Threads</h2>
         {% if latest_threads %}
         {% for thread in latest_threads %}

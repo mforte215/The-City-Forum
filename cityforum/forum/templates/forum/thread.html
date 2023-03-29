@@ -2,9 +2,16 @@
 {% load static %}
 {% block content%}
 <div class="main-content">
+    <div class="latest-threads">
+    {% if user.is_authenticated %}
+    <div class="add-thread-box">
+        <a class="add-thread-btn" href={% url 'add-thread' %}>Add Thread</a>
+    </div>
+    {% endif %}
     <h1>{{thread.title}}</h1>
     <div class="thread-body">
     <p>{{thread.body}}</p>
     </div>
+</div>
 </div>
 {% endblock %}

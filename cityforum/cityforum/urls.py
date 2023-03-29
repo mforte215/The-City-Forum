@@ -10,4 +10,5 @@ urlpatterns = [
     path('login/', views.loginView, name='login'),
     path('logout/', views.logoutView, name='logout'),
     path('sign-up/', views.signupView, name='sign-up'),
+    path('add-thread/', views.AddThreadView, name='add-thread'),
 ]
