@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+import datetime
 
 
 class Forum(models.Model):
@@ -15,6 +16,8 @@ class Forum(models.Model):
 class Thread(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=300)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='threads', null=True)
+    created_at = models.DateField(auto_now_add=True, editable=False)
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, related_name='threads', null=True, blank=False)
     body = models.TextField()
     slug = models.SlugField(unique=True, db_index=True, blank=True, max_length=255)

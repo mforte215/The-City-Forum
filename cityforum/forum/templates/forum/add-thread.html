@@ -7,7 +7,7 @@
         {% csrf_token %}
         <div class="thread-form-control"> 
             <p>Thread Forum</p>
-            <select name="thread-forum">
+            <select class="forum-dropdown" name="thread-forum">
             {% for forum in forums %}
             <option value={{forum.id}}>{{forum.title}}</option>
             {% endfor %}

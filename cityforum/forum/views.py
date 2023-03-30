@@ -62,8 +62,8 @@ def signupView(request):
         password2 = request.POST['word2']
         if username is not None:
             '''Try to see if this username is already taken'''
-            existing_user = User.objects.get(username=username)
-            if username is not None:
+            existing_user = User.objects.filter(username=username).exists()
+            if existing_user:
                 return render(request, 'registration/sign-up.html')
             else:
                 if password1 is not None:

@@ -229,3 +229,9 @@ body {
   border-radius: 8px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
+
+.forum-dropdown {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+}
