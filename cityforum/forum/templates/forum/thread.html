@@ -13,6 +13,26 @@
     <div class="thread-body">
     <p>{{thread.body}}</p>
     </div>
+    <div>
+        <h3>Comments</h3>
+        <div>
+            <h3>Add Comment</>
+            <form method="POST">
+                <div>
+                <textarea class="comment-body"></textarea>
+                </div>
+                <input class="submit-comment-btn" type="submit" value="Add Comment"/>
+            </form>
+        </div>
+        {% if comments %}
+        {% for comment in comments %}
+        <div class="comment-container">
+            <p>By {{comment.author}} at {{comment.created_at}}</p>
+            <p>{{comment.body}}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 </div>
 {% endblock %}

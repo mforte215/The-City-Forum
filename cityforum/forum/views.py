@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Forum, Thread
+from .models import Forum, Thread, Comment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -22,7 +22,8 @@ def threadView(request, title, slug):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
         thread = Thread.objects.get(slug=slug)
-        return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum })
+        comments = Comment.objects.filter(thread=thread)
+        return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
 
 def loginView(request):
     if request.method == 'GET':

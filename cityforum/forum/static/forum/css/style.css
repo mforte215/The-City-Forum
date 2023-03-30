@@ -235,3 +235,30 @@ body {
   border-radius: 8px;
   background-color: white;
 }
+
+/* Comment Section */
+
+.comment-container {
+  padding: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  width: 80%;
+}
+
+.comment-body {
+  width: 80%;
+  height: fit-content;
+  max-width: 80%;
+  min-width: 80%;
+}
+
+.submit-comment-btn {
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+}

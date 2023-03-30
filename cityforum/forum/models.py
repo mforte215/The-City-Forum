@@ -28,3 +28,10 @@ class Thread(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Thread, self).save(*args, **kwargs)
+
+class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', null=False)
+    created_at = models.DateField(auto_now_add=True, editable=False)
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='thread_comments', null=False)
+    body = models.TextField()
