@@ -10,15 +10,24 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def index(request):
     if request.method == 'GET':
         forums = Forum.objects.all()
-        latest_threads = Thread.objects.all().order_by('-id')[:10]
-        return render(request, 'forum/index.html', {'forums': forums, 'latest_threads': latest_threads})
+        thread_list = Thread.objects.all()
+        page = request.GET.get('page', 1)
+        paginator = Paginator(thread_list, 10)
+
+        try:
+            threads = paginator.page(page)
+        except PageNotAnInteger:
+            threads = paginator.page(1)
+        except EmptyPage:
+            threads = paginator.page(page.num_pages)
+        return render(request, 'forum/index.html', {'forums': forums, 'latest_threads': threads})
     
 def forumView(request, title):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
         thread_list = Thread.objects.filter(forum__title=title)
         page = request.GET.get('page', 1)
-        paginator = Paginator(thread_list, 3)
+        paginator = Paginator(thread_list, 10)
 
         try:
             threads = paginator.page(page)
