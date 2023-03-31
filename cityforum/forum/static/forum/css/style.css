@@ -262,3 +262,18 @@ body {
   border-radius: 8px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
+
+.page-item {
+  list-style-type: none;
+  display: contents;
+}
+
+.page-item a {
+  border-bottom: none;
+}
+
+.nav-container {
+  text-align: center;
+  width: 80%;
+  margin-top: 20%;
+}

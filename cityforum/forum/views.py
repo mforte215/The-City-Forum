@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
@@ -15,15 +16,42 @@ def index(request):
 def forumView(request, title):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
-        threads = Thread.objects.filter(forum__title=title)
+        thread_list = Thread.objects.filter(forum__title=title)
+        page = request.GET.get('page', 1)
+        paginator = Paginator(thread_list, 3)
+
+        try:
+            threads = paginator.page(page)
+        except PageNotAnInteger:
+            threads = paginator.page(1)
+        except EmptyPage:
+            threads = paginator.page(page.num_pages)
+
         return render(request, 'forum/forum.html', {'threads': threads, 'forum': forum })
 
 def threadView(request, title, slug):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
         thread = Thread.objects.get(slug=slug)
-        comments = Comment.objects.filter(thread=thread)
+        comments = Comment.objects.filter(thread=thread).order_by('created_at')
         return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
+    if request.method == 'POST':
+        print('PRINTING POST REQUEST')
+        print(request.POST)
+        body = request.POST['body']
+        if body:
+            author = request.user
+            thread = Thread.objects.get(slug=slug)
+            new_comment = Comment(body=body, author=author, thread=thread)
+            new_comment.save()
+            forum = Forum.objects.get(title=title)
+            comments = Comment.objects.filter(thread=thread).order_by('created_at')
+            return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
+        else:
+            forum = Forum.objects.get(title=title)
+            thread = Thread.objects.get(slug=slug)
+            comments = Comment.objects.filter(thread=thread).order_by('created_at')
+            return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
 
 def loginView(request):
     if request.method == 'GET':
@@ -95,4 +123,4 @@ def AddThreadView(request):
             threads = Thread.objects.filter(forum__id=thread_forum)
             return render(request, 'forum/forum.html', {'threads': threads, 'forum': forum })
         else:
-            return render(request, 'registration/login.html')    
+            return render(request, 'registration/login.html')
