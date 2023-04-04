@@ -42,8 +42,18 @@ def threadView(request, title, slug):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
         thread = Thread.objects.get(slug=slug)
-        comments = Comment.objects.filter(thread=thread).order_by('created_at')
+        comment_list = Comment.objects.filter(thread=thread).order_by('created_at')
+        page = request.GET.get('page', 1)
+        paginator = Paginator(comment_list, 10)
+        try:
+            comments = paginator.page(page)
+        except PageNotAnInteger:
+            comments = paginator.page(1)
+        except EmptyPage:
+            comments = paginator.page(page.num_pages)
+        
         return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
+    
     if request.method == 'POST':
         print('PRINTING POST REQUEST')
         print(request.POST)
