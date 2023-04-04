@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def index(request):
     if request.method == 'GET':
         forums = Forum.objects.all()
-        thread_list = Thread.objects.all()
+        thread_list = Thread.objects.all().order_by('-created_at')
         page = request.GET.get('page', 1)
         paginator = Paginator(thread_list, 10)
 
@@ -25,7 +25,7 @@ def index(request):
 def forumView(request, title):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
-        thread_list = Thread.objects.filter(forum__title=title)
+        thread_list = Thread.objects.filter(forum__title=title).order_by('-created_at')
         page = request.GET.get('page', 1)
         paginator = Paginator(thread_list, 10)
 
@@ -129,7 +129,7 @@ def AddThreadView(request):
             forum = Forum.objects.get(id=thread_forum)
             new_thread = Thread(forum=forum, title=title, body=body)
             new_thread.save()
-            threads = Thread.objects.filter(forum__id=thread_forum)
+            threads = Thread.objects.filter(forum__id=thread_forum).order_by('-created_at')
             return render(request, 'forum/forum.html', {'threads': threads, 'forum': forum })
         else:
             return render(request, 'registration/login.html')

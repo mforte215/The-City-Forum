@@ -34,6 +34,16 @@
             <p>{{comment.body}}</p>
         </div>
         {% endfor %}
+        {% else %}
+        {% if user.is_authenticated %}
+        <div>
+            <p>No comments yet</p>
+        </div>
+        {% else %}
+        <div>
+            <p><a href="{% url 'login' %}">Login</a> to be the first to comment </p>
+        </div>
+        {% endif %}
         {% endif %}
     </div>
 </div>

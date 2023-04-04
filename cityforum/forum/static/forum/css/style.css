@@ -122,6 +122,7 @@ body {
   margin-left: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
+  min-height: 100vh;
 }
 
 .thread-teaser {
@@ -276,4 +277,6 @@ body {
   text-align: center;
   width: 80%;
   margin-top: 5%;
+  bottom: 0;
+  position: inherit;
 }
