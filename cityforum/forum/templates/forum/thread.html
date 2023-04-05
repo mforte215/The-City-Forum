@@ -20,9 +20,8 @@
             <h3>Add Comment</>
             <form method="POST">
                 {% csrf_token %}
-                <div>
-                <textarea class="comment-body" name="body"></textarea>
-                </div>
+                {{ new_comment_form.media }}
+                {{ new_comment_form.as_p }}
                 <input class="submit-comment-btn" type="submit" value="Add Comment"/>
             </form>
         </div>
@@ -31,7 +30,7 @@
         {% for comment in comments %}
         <div class="comment-container">
             <p>By {{comment.author}} at {{comment.created_at}}</p>
-            <p>{{comment.body}}</p>
+            <p>{{comment.body|safe}}</p>
         </div>
         {% endfor %}
         {% if comments.has_other_pages %}

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import CommentForm
 
 
 def index(request):
@@ -42,9 +43,10 @@ def threadView(request, title, slug):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
         thread = Thread.objects.get(slug=slug)
-        comment_list = Comment.objects.filter(thread=thread).order_by('created_at')
+        comment_list = Comment.objects.filter(thread=thread).order_by('-created_at')
         page = request.GET.get('page', 1)
         paginator = Paginator(comment_list, 10)
+        new_comment_form = CommentForm()
         try:
             comments = paginator.page(page)
         except PageNotAnInteger:
@@ -52,7 +54,7 @@ def threadView(request, title, slug):
         except EmptyPage:
             comments = paginator.page(page.num_pages)
         
-        return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
+        return render(request, 'forum/thread.html', {'new_comment_form': new_comment_form, 'thread': thread, 'forum': forum, 'comments': comments})
     
     if request.method == 'POST':
         print('PRINTING POST REQUEST')
@@ -64,7 +66,7 @@ def threadView(request, title, slug):
             new_comment = Comment(body=body, author=author, thread=thread)
             new_comment.save()
             forum = Forum.objects.get(title=title)
-            comment_list = Comment.objects.filter(thread=thread).order_by('created_at')
+            comment_list = Comment.objects.filter(thread=thread).order_by('-created_at')
             page = request.GET.get('page', 1)
             paginator = Paginator(comment_list, 10)
             try:

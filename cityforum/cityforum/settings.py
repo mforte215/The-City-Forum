@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'forum',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,9 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static_files/'
+STATIC_ROOT = 'static_files/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_BASEPATH = "/static_files/ckeditor/ckeditor/"

@@ -3,6 +3,7 @@ import uuid
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 import datetime
+from ckeditor.fields import RichTextField
 
 
 class Forum(models.Model):
@@ -34,7 +35,6 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', null=False)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='thread_comments', null=False)
-    body = models.TextField()
-
+    body = RichTextField()
     def __str__(self):
         return f"Comment by {self.author} on {self.thread}"
