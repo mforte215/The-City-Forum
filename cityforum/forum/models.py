@@ -35,3 +35,6 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='thread_comments', null=False)
     body = models.TextField()
+
+    def __str__(self):
+        return f"Comment by {self.author} on {self.thread}"
