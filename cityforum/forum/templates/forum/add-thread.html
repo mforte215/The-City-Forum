@@ -5,22 +5,8 @@
 <div class="add-thread-container">
     <form method="POST">
         {% csrf_token %}
-        <div class="thread-form-control"> 
-            <p>Thread Forum</p>
-            <select class="forum-dropdown" name="thread-forum">
-            {% for forum in forums %}
-            <option value={{forum.id}}>{{forum.title}}</option>
-            {% endfor %}
-            </select>
-            </div>
-        <div class="thread-form-control"> 
-        <p>Thread Title</p>
-        <input class="thread-title" name="title" type="text" />
-        </div>
-        <div class="thread-form-control">
-        <p>Thread Text</p>
-        <textarea class="thread-body" rows="10" name="body" /> </textarea>
-        </div>
+        {{ thread_form.media }}
+        {{ thread_form.as_p }}
         <input class="submit-thread-btn" type="submit" value="Add Thread">
     </form>
 </div>

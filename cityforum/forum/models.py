@@ -20,7 +20,7 @@ class Thread(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='threads', null=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE, related_name='threads', null=True, blank=False)
-    body = models.TextField()
+    body = RichTextField()
     slug = models.SlugField(unique=True, db_index=True, blank=True, max_length=255)
 
     def __str__(self):

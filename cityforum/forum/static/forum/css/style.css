@@ -219,6 +219,10 @@ body {
   min-width: 80%;
 }
 
+.title-input {
+  width: 80%;
+}
+
 .submit-thread-btn {
   background-color: black;
   color: white;

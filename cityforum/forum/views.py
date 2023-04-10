@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import CommentForm
+from .forms import CommentForm, ThreadForm
 
 
 def index(request):
@@ -137,7 +137,8 @@ def AddThreadView(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
             forums = Forum.objects.all()
-            return render(request, 'forum/add-thread.html', {'forums': forums})
+            thread_form = ThreadForm()
+            return render(request, 'forum/add-thread.html', {'forums': forums, 'thread_form': thread_form})
         else:
             return render(request, 'registration/login.html')
     if request.method == 'POST':
