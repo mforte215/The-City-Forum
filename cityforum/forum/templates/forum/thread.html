@@ -34,7 +34,7 @@
             <div class="comment-info-container">
             <p class="comment-info-box">By {{comment.author}} at {{comment.created_at}}</p>
             {% if comment.author == user %}
-            <a class="delete-comment-btn" href="/">delete</a>
+            <a class="delete-comment-btn" href="{% url 'delete-comment' comment.slug %}">delete</a>
             {% endif %}
             </div>
             <div class="comment-body-container">

@@ -164,5 +164,24 @@ def AddThreadView(request):
         else:
             return render(request, 'registration/login.html')
 
-def DeleteCommentView(request, pk):
-    pass
+def DeleteCommentView(request, slug):
+    if slug:
+        found_comment = Comment.objects.get(slug=slug)
+        thread = found_comment.thread
+        forum = thread.forum
+        found_comment.delete()
+        comment_list = Comment.objects.filter(thread=thread).order_by('created_at')
+        page = request.GET.get('page', 1)
+        paginator = Paginator(comment_list, 10)
+        new_comment_form = CommentForm()
+        try:
+            comments = paginator.page(page)
+        except PageNotAnInteger:
+            comments = paginator.page(1)
+        except EmptyPage:
+            comments = paginator.page(page.num_pages)
+        
+        return HttpResponseRedirect(reverse('thread', kwargs={'title': forum.title, 'slug': thread.slug}))
+
+    else:
+        return reverse('index')
