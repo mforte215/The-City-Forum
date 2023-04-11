@@ -8,8 +8,10 @@
         <a class="add-thread-btn" href={% url 'add-thread' %}>Add Thread</a>
     </div>
     {% endif %}
+    <div class="thread-title-box">
     <h1>{{thread.title}}</h1>
     <h3>Published at {{thread.created_at}} by {{thread.author}}</h3>
+    </div>
     <div class="thread-body">
     <p>{{thread.body|safe}}</p>
     </div>
@@ -29,8 +31,16 @@
         {% if comments %}
         {% for comment in comments %}
         <div class="comment-container">
-            <p>By {{comment.author}} at {{comment.created_at}}</p>
+            <div class="comment-info-container">
+            <p class="comment-info-box">By {{comment.author}} at {{comment.created_at}}</p>
+            {% if comment.author == user %}
+            <a class="delete-comment-btn" href="/">delete</a>
+            {% endif %}
+            </div>
+            <div class="comment-body-container">
             <p>{{comment.body|safe}}</p>
+            </div>
+
         </div>
         {% endfor %}
         {% if comments.has_other_pages %}

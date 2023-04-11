@@ -163,3 +163,6 @@ def AddThreadView(request):
             return render(request, 'forum/forum.html', {'threads': threads, 'forum': forum })
         else:
             return render(request, 'registration/login.html')
+
+def DeleteCommentView(request, pk):
+    pass

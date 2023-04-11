@@ -144,6 +144,16 @@ body {
   width: 80%;
 }
 
+.thread-title-box {
+  display: block;
+  width: 80%;
+}
+
+.thread-title-box h3 {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
 .add-thread-btn {
   float: right;
   background-color: black;
@@ -247,8 +257,12 @@ body {
 
 .comment-container {
   padding: 10px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+  border: 2px solid black;
+  margin-bottom: 1ch;
+  border-radius: 8px;
   width: 80%;
+  display: block;
+  overflow: auto;
 }
 
 .comment-body {
@@ -268,6 +282,29 @@ body {
   padding-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+}
+
+.delete-comment-btn {
+  text-decoration: none;
+  color: black;
+  border-radius: 7px;
+  border: 2px solid black;
+  font-size: large;
+  padding: 3px;
+  float: right;
+}
+
+.comment-info-box {
+  float: left;
+}
+
+.comment-body-container {
+  display: inline;
+}
+
+.comment-info-container {
+  display: inline-block;
+  width: 95%;
 }
 
 .page-item {

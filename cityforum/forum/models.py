@@ -36,5 +36,11 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='thread_comments', null=False)
     body = RichTextField()
+    slug = models.SlugField(unique=True, db_index=True, blank=True, max_length=255)
+
     def __str__(self):
         return f"Comment by {self.author} on {self.thread}"
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(f"{self.author} {self.id}")
+        super(Comment, self).save(*args, **kwargs)
