@@ -30,7 +30,7 @@
         {% if latest_threads %}
         {% for thread in latest_threads %}
         <div class="thread-teaser">
-        <a href="{% url 'thread' thread.forum thread.slug %}">{{thread.title}} | {{thread.forum}}</a>
+        <a href="{% url 'thread' thread.forum thread.slug %}">{{thread.title}} by {{thread.author}} | {{thread.forum}}</a>
         </div>
         {% endfor %}
         {% endif %}

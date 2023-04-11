@@ -132,7 +132,8 @@ def signupView(request):
             else:
                 if password1 is not None:
                     if password1 == password2:
-                        new_user = User(username=username, password=password1)
+                        new_user = User(username=username)
+                        new_user.set_password(password1)
                         new_user.save()
                         login(request, new_user)
                         return HttpResponseRedirect(reverse('index'))
