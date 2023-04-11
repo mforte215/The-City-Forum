@@ -3,21 +3,25 @@ from .models import Comment, Thread
 from ckeditor.widgets import CKEditorWidget
 
 class CommentForm(forms.ModelForm):
-    body = forms.CharField(widget=CKEditorWidget())
 
     class Meta:
         model = Comment
+        labels = {
+            "body": ""
+        }
         fields = ('body',)
 
-class ThreadForm(forms.ModelForm):
-    title = forms.CharField(widget=forms.TextInput(attrs={'class': 'title-input'}))
-    body = forms.CharField(widget=CKEditorWidget())
-    
-    labels = {
-        'body': 'thread text',
-    }
 
+
+class ThreadForm(forms.ModelForm):
 
     class Meta:
         model = Thread
-        fields = ('title','body',)
+        fields = [ 'forum','title','body',]
+        labels = {
+            "body": "",
+            "title": "Thread Title"
+        }
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'title-input'}),
+        }

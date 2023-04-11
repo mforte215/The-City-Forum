@@ -200,6 +200,7 @@ body {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
   margin-left: 10%;
   margin-right: 10%;
+  margin-bottom: 10%;
   padding: 30px;
   border-radius: 10px;
   overflow: auto;
@@ -221,6 +222,7 @@ body {
 
 .title-input {
   width: 80%;
+  display: block;
 }
 
 .submit-thread-btn {

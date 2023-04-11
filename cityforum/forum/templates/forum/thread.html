@@ -11,7 +11,7 @@
     <h1>{{thread.title}}</h1>
     <h3>Published at {{thread.created_at}} by {{thread.author}}</h3>
     <div class="thread-body">
-    <p>{{thread.body}}</p>
+    <p>{{thread.body|safe}}</p>
     </div>
     <div>
         <h3>Comments</h3>

@@ -42,6 +42,8 @@ def forumView(request, title):
 def threadView(request, title, slug):
     if request.method == 'GET':
         forum = Forum.objects.get(title=title)
+        print('PRINTING FOUND FORUM IN GET')
+        print(forum)
         thread = Thread.objects.get(slug=slug)
         comment_list = Comment.objects.filter(thread=thread).order_by('-created_at')
         page = request.GET.get('page', 1)
@@ -65,7 +67,10 @@ def threadView(request, title, slug):
             thread = Thread.objects.get(slug=slug)
             new_comment = Comment(body=body, author=author, thread=thread)
             new_comment.save()
+            new_comment_form = CommentForm()
             forum = Forum.objects.get(title=title)
+            print('PRINTING FOUND FORUM IN POST REQUEST')
+            print(forum)
             comment_list = Comment.objects.filter(thread=thread).order_by('-created_at')
             page = request.GET.get('page', 1)
             paginator = Paginator(comment_list, 10)
@@ -75,12 +80,13 @@ def threadView(request, title, slug):
                 comments = paginator.page(1)
             except EmptyPage:
                 comments = paginator.page(page.num_pages)
-            return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
+            return render(request, 'forum/thread.html', {'new_comment_form': new_comment_form, 'thread': thread, 'forum': forum, 'comments': comments})
         else:
             forum = Forum.objects.get(title=title)
+            new_comment_form = CommentForm()
             thread = Thread.objects.get(slug=slug)
             comments = Comment.objects.filter(thread=thread).order_by('created_at')
-            return render(request, 'forum/thread.html', {'thread': thread, 'forum': forum, 'comments': comments})
+            return render(request, 'forum/thread.html', {'new_comment_form': new_comment_form, 'thread': thread, 'forum': forum, 'comments': comments})
 
 def loginView(request):
     if request.method == 'GET':
@@ -143,12 +149,14 @@ def AddThreadView(request):
             return render(request, 'registration/login.html')
     if request.method == 'POST':
         if request.user.is_authenticated:
-            thread_forum = request.POST['thread-forum']
+            print('PRINTING REQUEST')
+            print(request.POST)
+            thread_forum = request.POST['forum']
             title = request.POST['title']
             body = request.POST['body']
             '''Needs to be forum instance so need to get forum object'''
             forum = Forum.objects.get(id=thread_forum)
-            new_thread = Thread(forum=forum, title=title, body=body)
+            new_thread = Thread(forum=forum, title=title, body=body, author=request.user)
             new_thread.save()
             threads = Thread.objects.filter(forum__id=thread_forum).order_by('-created_at')
             return render(request, 'forum/forum.html', {'threads': threads, 'forum': forum })
