@@ -9,7 +9,7 @@
         <h3>Threads</h3>
         {% if threads %}
         {% for thread in threads %}
-        <div>
+        <div class="profile-half-list">
             <a href="{% url 'thread' thread.forum thread.slug %}">{{thread.title}} | {{thread.forum}}</a>
         </div>
         {% endfor %}
@@ -19,7 +19,7 @@
         <h3>Comments</h3>
         {% if comments %}
         {% for comment in comments %}
-        <div>
+        <div class="profile-half-list">
             <a href="/">{{comment}}</a>
         </div>
         {% endfor %}

@@ -140,18 +140,23 @@ def signupView(request):
                 else:
                     return render(request, 'registration/sign-up.html')
                 
-def AddThreadView(request):
+def AddThreadView(request, forum=None):
     if request.method == 'GET':
         if request.user.is_authenticated:
+            print('NAVIGATED FORUM')
+            print(forum)
             forums = Forum.objects.all()
-            thread_form = ThreadForm()
-            return render(request, 'forum/add-thread.html', {'forums': forums, 'thread_form': thread_form})
+            if forum is not None:
+                forum_object = Forum.objects.get(title=forum)
+                thread_form = ThreadForm(initial={'forum': forum_object})
+                return render(request, 'forum/add-thread.html', {'forums': forums, 'thread_form': thread_form, 'active_forum': forum})
+            else:
+                thread_form = ThreadForm()
+                return render(request, 'forum/add-thread.html', {'forums': forums, 'thread_form': thread_form, 'active_forum': forum})
         else:
             return render(request, 'registration/login.html')
     if request.method == 'POST':
         if request.user.is_authenticated:
-            print('PRINTING REQUEST')
-            print(request.POST)
             thread_forum = request.POST['forum']
             title = request.POST['title']
             body = request.POST['body']

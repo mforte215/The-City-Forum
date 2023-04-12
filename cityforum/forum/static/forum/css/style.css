@@ -339,3 +339,16 @@ body {
   width: 40%;
   float: left;
 }
+
+.profile-half-list {
+  border-bottom: 3px solid black;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.profile-half-list a {
+  text-decoration: none;
+  color: black;
+  border-bottom: none;
+  font-size: x-large;
+}
