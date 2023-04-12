@@ -323,3 +323,19 @@ body {
   bottom: 0;
   position: inherit;
 }
+
+/* PROFILE PAGE */
+
+.activity-container {
+  display: block;
+}
+
+.thread-activity {
+  width: 40%;
+  float: left;
+}
+
+.comment-activity {
+  width: 40%;
+  float: left;
+}

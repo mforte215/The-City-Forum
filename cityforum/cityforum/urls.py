@@ -11,5 +11,6 @@ urlpatterns = [
     path('logout/', views.logoutView, name='logout'),
     path('sign-up/', views.signupView, name='sign-up'),
     path('add-thread/', views.AddThreadView, name='add-thread'),
-    path('delete-comment/<slug:slug>', views.DeleteCommentView, name='delete-comment')
+    path('delete-comment/<slug:slug>', views.DeleteCommentView, name='delete-comment'),
+    path('profile/', views.ProfileView, name='profile')
 ]

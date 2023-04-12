@@ -185,3 +185,16 @@ def DeleteCommentView(request, slug):
 
     else:
         return reverse('index')
+
+def ProfileView(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            '''Get user's threads'''
+            user = request.user
+            threads = Thread.objects.filter(author=user)
+            '''Get user's comments'''
+            comments = Comment.objects.filter(author=user)
+            
+            return render(request, 'forum/profile.html', {'threads': threads, 'comments': comments})
+        else:
+            return HttpResponseRedirect(reverse('login'))

@@ -7,14 +7,20 @@
     </div>
   </a>
   <div class="link-container">
-    <div class="link-area">
+
       {% if user.is_authenticated %}
+      <div class="link-area">
+      <a href="{% url 'profile' %}">Profile</a>
+      </div>
+      <div class="link-area">
       <a href="{% url 'logout' %}">Logout {{user}}</a>
+      </div>
       {% else %}
+      <div class="link-area">
       <a href="{% url 'login' %}">Login</a>
       <a href="{% url 'sign-up' %}">Sign Up</a>
+      </div>
       {% endif %}
-    </div>
     <div class="link-area">
       <a href="{% url 'forum' 'Development' %}">Development</a>
     </div>
