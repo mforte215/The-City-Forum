@@ -343,7 +343,8 @@ body {
 .profile-half-list {
   border-bottom: 3px solid black;
   width: 80%;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
+  overflow: auto;
 }
 
 .profile-half-list a {
@@ -351,4 +352,23 @@ body {
   color: black;
   border-bottom: none;
   font-size: x-large;
+}
+
+.profile-delete-section {
+  display: block;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.profile-delete-section a {
+  color: gray;
+  float: right;
+}
+
+.forum-choicefield {
+  text-decoration: none;
+  background: transparent;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: medium;
 }

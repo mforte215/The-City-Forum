@@ -203,3 +203,11 @@ def ProfileView(request):
             return render(request, 'forum/profile.html', {'threads': threads, 'comments': comments})
         else:
             return HttpResponseRedirect(reverse('login'))
+
+def DeleteThreadView(request, slug):
+    if slug:
+        found_thread = Thread.objects.get(slug=slug)
+        found_thread.delete()
+        return HttpResponseRedirect(reverse('profile'))
+    else:
+        return HttpResponseRedirect(reverse('index'))

@@ -24,4 +24,5 @@ class ThreadForm(forms.ModelForm):
         }
         widgets = {
             "title": forms.TextInput(attrs={'class': 'title-input'}),
+            "forum": forms.Select(attrs={'class': 'forum-choicefield'}),
         }

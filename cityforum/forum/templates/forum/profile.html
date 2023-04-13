@@ -11,6 +11,9 @@
         {% for thread in threads %}
         <div class="profile-half-list">
             <a href="{% url 'thread' thread.forum thread.slug %}">{{thread.title}} | {{thread.forum}}</a>
+            <div class="profile-delete-section">
+            <a href="{% url 'delete-thread' thread.slug %}">delete</a>
+            </div>
         </div>
         {% endfor %}
         {% endif %}
@@ -21,6 +24,9 @@
         {% for comment in comments %}
         <div class="profile-half-list">
             <a href="/">{{comment}}</a>
+            <div class="profile-delete-section">
+                <a href="{% url 'delete-comment' comment.slug %}">delete</a>
+            </div>
         </div>
         {% endfor %}
         {% endif %}
